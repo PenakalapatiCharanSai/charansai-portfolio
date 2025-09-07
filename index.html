@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio · Final Year CSE</title>
+  <meta name="description" content="Final year CSE portfolio: projects, skills, education, contact." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="assets/favicon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- GSAP + ScrollMagic (CDNs) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+
+  <!-- App JS -->
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top">Charan Sai<span class="accent"></span></a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+
+      <ul id="menu" class="menu" role="menubar" aria-label="Primary navigation">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn btn--ghost" href="docs/resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+        <li><button id="themeToggle" class="btn btn--icon" aria-label="Toggle theme">🌙</button></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- 1. TITLE PAGE -->
+  <section id="titlepage" class="hero">
+    <div class="container hero__grid">
+      <div>
+        <p class="eyebrow">B.Tech · Computer Science & Engineering · Final Year</p>
+        <h1 class="hero__title">Hi — I'm <span class="accent">Penakalapati Charan Sai</span></h1>
+        <p class="lead">I build clean, accessible web apps and reliable backend systems. Seeking internships & capstone collaborations.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn btn--ghost" href="docs/CharanSai_FinalRESUME.pdf" download>Download Resume</a>
+        </div>
+
+        <div class="social" style="margin-top:.8rem;">
+          <a href="mailto:pcharan87746@gmail.com" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a href="https://github.com/PenkalapatiCharanSai" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/charan-sai-penakalapati/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
+        
+      </div>
+
+      <div class="hero__media">
+        <img src="assets/profile.jpg" alt="Headshot" class="avatar" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROFESSIONAL SUMMARY -->
+  <section id="summary" class="section section--alt">
+    <div class="container">
+      <h2>Professional Summary</h2>
+      <p class="lead">Final-year Computer Science student with hands-on experience in full-stack development, data engineering, and systems design. Passionate about building performant applications and delivering tangible outcomes.</p>
+    </div>
+  </section>
+
+  <!-- 3. ABOUT ME -->
+  <section id="about" class="section">
+    <div class="container two-col">
+      <div>
+        <h2>About Me</h2>
+        <p>I graduated with strong academic results and practical exposure to web apps and machine learning projects. I enjoy solving product-focused problems, participating in hackathons, and contributing to open-source.</p>
+
+        <ul class="badges" aria-hidden="false">
+          <li>Java</li><li>Python</li><li>DSA</li><li>MERN</li><li>REST APIs</li><li>AWS (basic)</li><li>SQL & NoSQL</li>
+        </ul>
+      </div>
+
+      <aside class="card card--soft">
+        <h3>Academic Snapshot</h3>
+        <ul class="list">
+          <li>Degree: B.Tech (CSE)</li>
+          <li>Malla Reddy University</li>
+          <li>CGPA: 8.04 / 10</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4. SKILLS -->
+  <section id="skills" class="section section--alt">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="grid grid--3">
+        <div class="card card__body"><h3>Programming</h3><p class="small muted">C, C++, Java, Python</p></div>
+        <div class="card card__body"><h3>Frontend</h3><p class="small muted">HTML, CSS, JavaScript, React</p></div>
+        <div class="card card__body"><h3>Backend / DB</h3><p class="small muted">Node.js, Express, MongoDB, MySQL</p></div>
+        <div class="card card__body"><h3>ML / Data</h3><p class="small muted">scikit-learn, pandas, basic TensorFlow</p></div>
+        <div class="card card__body"><h3>Soft Skills</h3><p class="small muted">Teamwork, Communication, Leadership</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. EDUCATION -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="timeline">
+        <li>
+          <div class="tl-card">
+            <strong>B.Tech — Computer Science & Engineering</strong>
+            <div class="muted">Malla Reddy University · 2022 – 2026</div>
+            <p>CGPA: 8.04/10</p>
+          </div>
+        </li>
+      </div>
+      <div class="timeline">
+        <li>
+          <div class="tl-card">
+            <strong>Intermediate</strong>
+            <div class="muted">Narayan Junior College · 2020 – 2022</div>
+            <p>78.3%</p>
+          </div>
+        </li>
+      </div>
+      <div class="timeline">
+        <li>
+          <div class="tl-card">
+            <strong>Grade X</strong>
+            <div class="muted">Keshava Reddy School · 2014 – 2020</div>
+            <p>100%</p>
+          </div>
+        </li>
+      </div>
+    </div>
+  </section>
+
+<!-- 6. KEY PROJECTS -->
+<section id="projects" class="section section--alt">
+  <div class="container">
+    <h2>Projects</h2>
+
+    <div class="grid grid--3">
+      <article class="project card">
+        <img src="assets/proj1.jpg" alt="Project 1 screenshot" />
+        <div class="card__body">
+          <h3>Smart Attendance (FaceID)</h3>
+          <p class="tiny muted">Smart Attendance (FaceID) automates student attendance using face recognition. Built with Python, Flask, OpenCV, and MongoDB,
+             it enables secure login, student registration, real-time attendance marking, and CSV exports. Features include year/department tracking, 
+             admin dashboard, and absent list generation.</p>
+          <p class="small muted"><strong>Tech:</strong> Python, Flask, OpenCV, MongoDB</p>
+          <div class="card__actions">
+            <a href="https://github.com/PenkalapatiCharanSai/Smart-Attendance" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+              View Code
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project card">
+        <img src="assets/proj2.jpg" alt="Project 2 screenshot" />
+        <div class="card__body">
+          <h3>MERN Smart-Scheduler</h3>
+          <p class="tiny muted">Developed a Smart Scheduler for Professors using the MERN stack with role-based access, 
+            enabling HODs to assign, edit, and manage class schedules while professors can seamlessly view their timetables.</p>
+          <p class="small muted"><strong>Tech:</strong> React, Node.js, Express, MongoDB</p>
+          <div class="card__actions">
+            <a href="https://github.com/PenkalapatiCharanSai/smartscheduler" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+              View Code
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project card">
+        <img src="assets/proj3.jpg" alt="Project 3 screenshot" />
+        <div class="card__body">
+          <h3>Global Landslide</h3>
+          <p class="tiny muted">Climate Risk & Disaster Management Exploring NASA’s Global Landslide Catalog to analyze patterns, triggers, and global impact of landslides.
+           This project applies AI/ML for disaster risk insights, aiming to support climate resilience and early warning systems under Climate Risk & Disaster Management.</p>
+          <p class="small muted"><strong>Tech:</strong> Python, Streamlit </p>
+          <div class="card__actions">
+            <a href="https://github.com/PenkalapatiCharanSai/climate-risk-project" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+              View Code
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+  <!-- 7. CERTIFICATIONS -->
+<section id="certifications" class="section">
+  <div class="container">
+    <h2>Certifications</h2>
+    <ul class="list">
+      <li>
+        <a href="https://www.credly.com/badges/b341dff9-0237-47ad-820b-acaba5c86589/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          Web Development Fundamentals (IBM) — 2025
+        </a>
+      </li>
+      <li>
+        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_wKXNYfZmFnycbR3JQ_1752587271476_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">
+          Deloitte Australia - Data Analytics Job Simulation (Forage) — 2025
+        </a>
+      </li>
+      <li>
+        <a href="https://www.coursera.org/account/accomplishments/records/GVCZ6MBWDOSK" target="_blank" rel="noopener noreferrer">
+          The Java Language (Coursera) — 2025
+        </a>
+      </li>
+      <li>
+        <a href="https://www.coursera.org/account/accomplishments/records/5B84275GJBKK" target="_blank" rel="noopener noreferrer">
+          Python Programming Essentials (Coursera) — 2023
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+  <!-- 8. AWARDS & ACHIEVEMENTS -->
+  <section id="achievements" class="section section--alt">
+    <div class="container">
+      <h2>Awards & Achievements</h2>
+      <ul class="list">
+        <li>Juspay Hackathon — 2025</li>
+        <li>LeetCode — 100+ problems solved</li>
+        <li>Essay Writing</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. INTERNSHIPS / EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Internships & Experience</h2>
+      <div class="timeline">
+        <li>
+          <div class="tl-card">
+            <h3>Green Skills using AI technologies —  Edunet Foundation</h3>
+            <span class="muted">August 2025 - September 2025</span>
+            <p>Climate Risk & Disaster Management Exploring NASA’s Global Landslide Catalog to analyze patterns, triggers, and global impact of landslides.
+              This project applies AI/ML for disaster risk insights, aiming to support climate resilience and early warning systems under Climate Risk & Disaster Management.</p>
+          </div>
+        </li>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. EXTRACURRICULAR ACTIVITIES -->
+  <section id="extracurricular" class="section section--alt">
+    <div class="container">
+      <h2>Extracurricular Activities</h2>
+      <ul class="list">
+        <li>Member — College Coding Club (workshops)</li>
+        <li>Volunteer — Digital literacy NGO</li>
+        <li>Kho-Kho and Volley ball </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 11. CONTACT / LINKS -->
+  <section id="contact" class="section">
+    <div class="container two-col">
+      <div>
+        <h2>Contact</h2>
+        <p class="small muted">Let’s connect through any platform below</p>
+  
+        <div class="social" style="margin-top:1rem;">
+          <a href="mailto:pcharan87746@gmail.com" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a href="https://github.com/PenkalapatiCharanSai" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/charan-sai-penakalapati/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+  
+      <form id="contactForm" class="card card--soft" aria-label="Contact form">
+        <label>
+          Name
+          <input required name="name" placeholder="Your name" />
+        </label>
+        <label>
+          Email
+          <input required type="email" name="email" placeholder="you@gmail.com" />
+        </label>
+        <label>
+          Message
+          <textarea required name="message" rows="5" placeholder="How can I help?"></textarea>
+        </label>
+        <button type="submit" class="btn">Send Message</button>
+        <p class="muted tiny">This form will open your email client with a pre-filled message.</p>
+      </form>
+    </div>
+  </section>
+  
+  
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="small muted">© <span id="year"></span> Penakalapati Charan Sai</div>
+      <a class="tiny" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+</body>
+</html>
