@@ -1,339 +1,486 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio · Final Year CSE</title>
-  <meta name="description" content="Final year CSE portfolio: projects, skills, education, contact." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" href="assets/favicon.png" />
+  <title>Penakalapati Charan Sai — Software Engineer</title>
+  <meta name="description"
+    content="Portfolio of Penakalapati Charan Sai — Computer Science graduate, full-stack developer." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-  <!-- Styles -->
+  <!-- Theme Initializer (Prevents FOUC) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- GSAP + ScrollMagic (CDNs) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
-
-  <!-- App JS -->
   <script defer src="script.js"></script>
 </head>
+
 <body>
 
   <!-- NAV -->
   <header class="site-header" id="top">
     <div class="container nav">
-      <a class="brand" href="#top">Charan Sai<span class="accent"></span></a>
+      <a class="brand" href="#top"><span class="mark">PC</span> Charan Sai</a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41">
+            </path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
 
       <ul id="menu" class="menu" role="menubar" aria-label="Primary navigation">
-        <li><a href="#about">About Me</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a class="btn btn--ghost" href="docs/CharanSai_FinalRESUME.pdf" target="_blank" rel="noopener">Resume</a></li>
-        <li><button id="themeToggle" class="btn btn--icon" aria-label="Toggle theme">🌙</button></li>
+        <li class="sep"></li>
+        <li><a class="btn btn--sm" href="docs/Charan_Sai_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- 1. TITLE PAGE -->
-  <section id="titlepage" class="hero">
-    <div class="container hero__grid">
-      <div>
-        <p class="eyebrow">B.Tech · Computer Science & Engineering · Final Year</p>
-        <h1 class="hero__title">Hi — I'm <span class="accent">Penakalapati Charan Sai</span></h1>
-        <p class="lead">I build clean, accessible web apps and reliable backend systems. Seeking internships & capstone collaborations.</p>
+  <!-- HERO -->
+  <section class="hero" id="titlepage">
+    <div class="container hero__inner">
+      <div class="hero__main">
+        <div class="hero__content">
+          <p class="status-pill reveal"><span class="dot"></span> Available for full-time roles</p>
+          <p class="eyebrow reveal">Computer Science &amp; Engineering Graduate</p>
+          <h1 class="hero__title reveal">Hi — I'm <span class="accent">Penakalapati Charan Sai</span></h1>
+          <p class="lead reveal">A recent Computer Science graduate who builds clean, accessible web apps and reliable
+            backend systems — from full-stack platforms to applied machine learning.</p>
 
-        <div class="cta-row">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn btn--ghost" href="docs/CharanSai_FinalRESUME.pdf" download>Download Resume</a>
+          <div class="cta-row reveal">
+            <a class="btn btn--solid" href="#projects">View Projects</a>
+            <a class="btn" href="docs/Charan_Sai_Resume.pdf" download>Download Resume</a>
+          </div>
+
+          <div class="social reveal">
+            <a href="mailto:pcharan87746@gmail.com" aria-label="Email" title="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 7l10 6 10-6" />
+              </svg>
+            </a>
+            <a href="https://github.com/PenkalapatiCharanSai" target="_blank" rel="noopener" aria-label="GitHub"
+              title="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.28 5.69.42.36.78 1.07.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.2.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/charan-sai-penakalapati/" target="_blank" rel="noopener"
+              aria-label="LinkedIn" title="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
+              </svg>
+            </a>
+            <a href="https://leetcode.com/u/PenakalapatiCharanSai/" target="_blank" rel="noopener" aria-label="LeetCode"
+              title="LeetCode">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863 0-.713.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.178 1.823.645l2.697 2.607c.507.507 1.32.507 1.827 0s.507-1.32 0-1.827l-2.697-2.607C14.167 5.305 12.7 4.7 11.233 4.7c-1.468 0-2.934.605-3.921 1.592L2.993 10.67c-.987.988-1.493 2.454-1.493 3.922 0 1.468.506 2.934 1.493 3.922l4.319 4.363c.987.987 2.453 1.493 3.921 1.493 1.467 0 2.934-.506 3.921-1.493l2.697-2.607c.507-.507.507-1.32 0-1.827s-1.32-.507-1.827 0zM20.812 13.066H9.72c-.717 0-1.3.583-1.3 1.3 0 .717.583 1.3 1.3 1.3h11.092c.717 0 1.3-.583 1.3-1.3 0-.717-.583-1.3-1.3-1.3z" />
+              </svg>
+            </a>
+            <a href="https://hackerrank.com/profile/pcharansai" target="_blank" rel="noopener" aria-label="HackerRank"
+              title="HackerRank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0a12 12 0 0 0-12 12 12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm3.894 17.828h-2.29V13.88h-3.21v3.948H8.105V6.172h2.29v3.834h3.21V6.172h2.29v11.656z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
-        <div class="social" style="margin-top:.8rem;">
-          <a href="mailto:pcharan87746@gmail.com" aria-label="Email">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-          <a href="https://github.com/PenkalapatiCharanSai" target="_blank" rel="noopener" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/charan-sai-penakalapati/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
+        <div class="hero__avatar reveal">
+          <div class="profile-frame">
+            <img src="assets/profile.jpg" alt="Charan Sai Profile" class="profile-img" />
+          </div>
         </div>
-        
-      </div>
-
-      <div class="hero__media">
-        <img src="assets/profile.jpg" alt="Headshot" class="avatar" />
       </div>
     </div>
   </section>
 
-  <!-- 2. PROFESSIONAL SUMMARY -->
-  <section id="summary" class="section section--alt">
-    <div class="container">
-      <h2>Professional Summary</h2>
-      <p class="lead">Final-year Computer Science student with hands-on experience in full-stack development, data engineering, and systems design. Passionate about building performant applications and delivering tangible outcomes.</p>
-    </div>
-  </section>
-
-  <!-- 3. ABOUT ME -->
+  <!-- ABOUT -->
   <section id="about" class="section">
-    <div class="container two-col">
-      <div>
-        <h2>About Me</h2>
-        <p>I graduated with strong academic results and practical exposure to web apps and machine learning projects. I enjoy solving product-focused problems, participating in hackathons, and contributing to open-source.</p>
-
-        <ul class="badges" aria-hidden="false">
-          <li>Java</li><li>Python</li><li>DSA</li><li>MERN</li><li>REST APIs</li><li>AWS (basic)</li><li>SQL & NoSQL</li>
-        </ul>
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section__title">A little about me</h2>
       </div>
 
-      <aside class="card card--soft">
-        <h3>Academic Snapshot</h3>
-        <ul class="list">
-          <li>Degree: B.Tech (CSE)</li>
-          <li>Malla Reddy University</li>
-          <li>CGPA: 8.04 / 10</li>
-        </ul>
-      </aside>
+      <div class="about__grid">
+        <div class="reveal">
+          <p>I recently completed my B.Tech in Computer Science &amp; Engineering, with hands-on experience in
+            full-stack development, data engineering, and systems design. I'm passionate about building performant
+            applications and delivering tangible outcomes.</p>
+          <p>Along the way I picked up strong academic results and real exposure to web apps and machine learning
+            projects. I enjoy solving product-focused problems, competing in hackathons, and contributing to
+            open-source.</p>
+
+          <ul class="badges">
+            <li>Python</li>
+            <li>DSA</li>
+            <li>MERN</li>
+            <li>REST APIs</li>
+            <li>SQL &amp; NoSQL</li>
+          </ul>
+        </div>
+
+        <aside class="snapshot reveal">
+          <h3>Academic &amp; Coding Profiles</h3>
+          <ul class="list">
+            <li><span>Degree</span><b>B.Tech (CSE)</b></li>
+            <li><span>University</span><b>Malla Reddy University</b></li>
+            <li><span>CGPA</span><b>8.24 / 10</b></li>
+            <li><span>Status</span><b>Graduated · 2026</b></li>
+            <li><span>LeetCode</span><b><a href="https://leetcode.com/u/PenakalapatiCharanSai/" target="_blank"
+                  rel="noopener" style="color:var(--accent);">View Profile ↗</a></b></li>
+            <li><span>HackerRank</span><b><a href="https://hackerrank.com/profile/pcharansai" target="_blank"
+                  rel="noopener" style="color:var(--accent);">View Profile ↗</a></b></li>
+          </ul>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <!-- 4. SKILLS -->
+  <!-- SKILLS -->
   <section id="skills" class="section section--alt">
     <div class="container">
-      <h2>Skills</h2>
-      <div class="grid grid--3">
-        <div class="card card__body"><h3>Programming</h3><p class="small muted">C, C++, Java, Python</p></div>
-        <div class="card card__body"><h3>Frontend</h3><p class="small muted">HTML, CSS, JavaScript, React</p></div>
-        <div class="card card__body"><h3>Backend / DB</h3><p class="small muted">Node.js, Express, MongoDB, MySQL</p></div>
-        <div class="card card__body"><h3>ML / Data</h3><p class="small muted">scikit-learn, pandas, basic TensorFlow</p></div>
-        <div class="card card__body"><h3>Soft Skills</h3><p class="small muted">Teamwork, Communication, Leadership</p></div>
+      <div class="section__head reveal">
+        <p class="eyebrow">Skills</p>
+        <h2 class="section__title">What I work with</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 4L2 12l6 8M16 4l6 8-6 8" />
+            </svg></div>
+          <h3>Programming</h3>
+          <p>Python</p>
+        </div>
+        <div class="skill-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="M3 9h18" />
+              <circle cx="6.5" cy="6.5" r=".6" fill="currentColor" stroke="none" />
+            </svg></div>
+          <h3>Frontend</h3>
+          <p>HTML, CSS, JavaScript, React</p>
+        </div>
+        <div class="skill-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="7" rx="1.5" />
+              <rect x="3" y="14" width="18" height="7" rx="1.5" />
+              <circle cx="7" cy="6.5" r=".6" fill="currentColor" stroke="none" />
+              <circle cx="7" cy="17.5" r=".6" fill="currentColor" stroke="none" />
+            </svg></div>
+          <h3>Backend / DB</h3>
+          <p>Node.js, Express, MongoDB, MySQL</p>
+        </div>
+        <div class="skill-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19V9M11 19V5M18 19v-7" />
+              <path d="M3 19h18" />
+            </svg></div>
+          <h3>ML / Data</h3>
+          <p>scikit-learn, pandas, basic TensorFlow</p>
+        </div>
+        <div class="skill-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="8" r="3.2" />
+              <path d="M2.5 20c.8-3.4 3.4-5.4 6.5-5.4s5.7 2 6.5 5.4" />
+              <path d="M16 4.2a3.2 3.2 0 0 1 0 6.2" />
+              <path d="M18.5 14.8c2.3.6 4 2.4 4.5 5.2" />
+            </svg></div>
+          <h3>Soft Skills</h3>
+          <p>Teamwork, Communication, Leadership</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. EDUCATION -->
+  <!-- EDUCATION -->
   <section id="education" class="section">
     <div class="container">
-      <h2>Education</h2>
-      <div class="timeline">
-        <li>
-          <div class="tl-card">
-            <strong>B.Tech — Computer Science & Engineering</strong>
-            <div class="muted">Malla Reddy University · 2022 – 2026</div>
-            <p>CGPA: 8.04/10</p>
-          </div>
-        </li>
+      <div class="section__head reveal">
+        <p class="eyebrow">Education</p>
+        <h2 class="section__title">Academic background</h2>
       </div>
+
       <div class="timeline">
-        <li>
-          <div class="tl-card">
+        <div class="t-item reveal">
+          <div class="t-card">
+            <strong>B.Tech — Computer Science &amp; Engineering</strong>
+            <span class="muted">Malla Reddy University · 2022 – 2026</span>
+            <p class="score">CGPA <b>8.24 / 10</b></p>
+          </div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-card">
             <strong>Intermediate</strong>
-            <div class="muted">Narayan Junior College · 2020 – 2022</div>
-            <p>78.3%</p>
+            <span class="muted">Narayan Junior College · 2020 – 2022</span>
+            <p class="score">Score <b>78.3%</b></p>
           </div>
-        </li>
-      </div>
-      <div class="timeline">
-        <li>
-          <div class="tl-card">
+        </div>
+        <div class="t-item reveal">
+          <div class="t-card">
             <strong>Grade X</strong>
-            <div class="muted">Keshava Reddy School · 2014 – 2020</div>
-            <p>100%</p>
+            <span class="muted">Keshava Reddy School · 2019 – 2020</span>
+            <p class="score">Score <b>100%</b></p>
           </div>
-        </li>
+        </div>
       </div>
     </div>
   </section>
 
-<!-- 6. KEY PROJECTS -->
-<section id="projects" class="section section--alt">
-  <div class="container">
-    <h2>Projects</h2>
-
-    <div class="grid grid--3">
-      <article class="project card">
-        <img src="assets/proj1.jpg" alt="Project 1 screenshot" />
-        <div class="card__body">
-          <h3>Smart Attendance (FaceID)</h3>
-          <p class="tiny muted">Smart Attendance (FaceID) automates student attendance using face recognition. Built with Python, Flask, OpenCV, and MongoDB,
-             it enables secure login, student registration, real-time attendance marking, and CSV exports. Features include year/department tracking, 
-             admin dashboard, and absent list generation.</p>
-          <p class="small muted"><strong>Tech:</strong> Python, Flask, OpenCV, MongoDB</p>
-          <div class="card__actions">
-            <a href="https://github.com/PenkalapatiCharanSai/Smart-Attendance" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
-              View Code
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project card">
-        <img src="assets/proj2.jpg" alt="Project 2 screenshot" />
-        <div class="card__body">
-          <h3>MERN Smart-Scheduler</h3>
-          <p class="tiny muted">Developed a Smart Scheduler for Professors using the MERN stack with role-based access, 
-            enabling HODs to assign, edit, and manage class schedules while professors can seamlessly view their timetables.</p>
-          <p class="small muted"><strong>Tech:</strong> React, Node.js, Express, MongoDB</p>
-          <div class="card__actions">
-            <a href="https://github.com/PenkalapatiCharanSai/smartscheduler" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
-              View Code
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project card">
-        <img src="assets/proj3.jpg" alt="Project 3 screenshot" />
-        <div class="card__body">
-          <h3>Global Landslide</h3>
-          <p class="tiny muted">Climate Risk & Disaster Management Exploring NASA’s Global Landslide Catalog to analyze patterns, triggers, and global impact of landslides.
-           This project applies AI/ML for disaster risk insights, aiming to support climate resilience and early warning systems under Climate Risk & Disaster Management.</p>
-          <p class="small muted"><strong>Tech:</strong> Python, Streamlit </p>
-          <div class="card__actions">
-            <a href="https://github.com/PenkalapatiCharanSai/climate-risk-project" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
-              View Code
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-
-  <!-- 7. CERTIFICATIONS -->
-<section id="certifications" class="section">
-  <div class="container">
-    <h2>Certifications</h2>
-    <ul class="list">
-      <li>
-        <a href="https://www.credly.com/badges/b341dff9-0237-47ad-820b-acaba5c86589/linked_in_profile" target="_blank" rel="noopener noreferrer">
-          Web Development Fundamentals (IBM) — 2025
-        </a>
-      </li>
-      <li>
-        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_wKXNYfZmFnycbR3JQ_1752587271476_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">
-          Deloitte Australia - Data Analytics Job Simulation (Forage) — 2025
-        </a>
-      </li>
-      <li>
-        <a href="https://www.coursera.org/account/accomplishments/records/GVCZ6MBWDOSK" target="_blank" rel="noopener noreferrer">
-          The Java Language (Coursera) — 2025
-        </a>
-      </li>
-      <li>
-        <a href="https://www.coursera.org/account/accomplishments/records/5B84275GJBKK" target="_blank" rel="noopener noreferrer">
-          Python Programming Essentials (Coursera) — 2023
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-
-  <!-- 8. AWARDS & ACHIEVEMENTS -->
-  <section id="achievements" class="section section--alt">
+  <!-- PROJECTS -->
+  <section id="projects" class="section section--alt">
     <div class="container">
-      <h2>Awards & Achievements</h2>
-      <ul class="list">
-        <li>Juspay Hackathon — 2025</li>
-        <li>LeetCode — 100+ problems solved</li>
-        <li>Essay Writing</li>
-      </ul>
-    </div>
-  </section>
+      <div class="section__head reveal">
+        <p class="eyebrow">Projects</p>
+        <h2 class="section__title">Things I've built</h2>
+        <p class="section__desc">A few projects that reflect how I like to work — full-stack, applied ML, and
+          data-driven tools.</p>
+      </div>
 
-  <!-- 9. INTERNSHIPS / EXPERIENCE -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2>Internships & Experience</h2>
-      <div class="timeline">
-        <li>
-          <div class="tl-card">
-            <h3>Green Skills using AI technologies —  Edunet Foundation</h3>
-            <span class="muted">August 2025 - September 2025</span>
-            <p>Climate Risk & Disaster Management Exploring NASA’s Global Landslide Catalog to analyze patterns, triggers, and global impact of landslides.
-              This project applies AI/ML for disaster risk insights, aiming to support climate resilience and early warning systems under Climate Risk & Disaster Management.</p>
+      <div class="projects-grid">
+        <article class="project reveal">
+          <img src="assets/trueframe.png" alt="TrueFrame AI Dashboard" class="project__img" />
+          <div class="project__body">
+            <h3>TrueFrame AI — Deepfake Video Detection</h3>
+            <p>An AI-powered deepfake video detection web app using PyTorch, ResNet18, and LSTM to analyze spatial and
+              temporal inconsistencies across video frames. Features a Flask backend, OpenCV extraction, and PDF report
+              generation.</p>
+            <div class="stack">
+              <span>Python</span><span>PyTorch</span><span>Flask</span><span>OpenCV</span>
+            </div>
+            <div class="project__links">
+              <a class="btn btn--sm btn--solid" href="https://penakalapaticharansai-trueframe-ai.hf.space/"
+                target="_blank" rel="noopener">Live Demo ↗</a>
+              <a class="btn btn--sm" href="https://github.com/PenkalapatiCharanSai/TrueFrame-AI" target="_blank"
+                rel="noopener">View Code ↗</a>
+            </div>
           </div>
-        </li>
+        </article>
+
+        <article class="project reveal">
+          <img src="assets/smart_scheduler.png" alt="Smart Scheduler for Professors" class="project__img" />
+          <div class="project__body">
+            <h3>Smart Scheduler for Professors</h3>
+            <p>A role-based scheduling platform enabling HODs to assign, edit, and manage professor timetables with
+              conflict detection. Built with secure JWT authentication and an AI-driven module for automated
+              suggestions.</p>
+            <div class="stack">
+              <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span>
+            </div>
+            <div class="project__links">
+              <a class="btn btn--solid btn--sm" href="https://smartscheduler-indol.vercel.app/" target="_blank"
+                rel="noopener">Live Demo ↗</a>
+              <a class="btn btn--sm" href="https://github.com/PenkalapatiCharanSai/smartscheduler" target="_blank"
+                rel="noopener">View Code ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <img src="assets/smart_attendance.png" alt="AI-Based Attendance System" class="project__img" />
+          <div class="project__body">
+            <h3>AI-Based Attendance System</h3>
+            <p>A real-time AI-powered attendance platform with FaceNet/DeepFace facial recognition. Features MTCNN for
+              multi-face detection and liveness verification to prevent spoofing, plus a live dashboard.</p>
+            <div class="stack">
+              <span>Python</span><span>Flask</span><span>OpenCV</span><span>MongoDB</span>
+            </div>
+            <a class="btn btn--sm" href="https://github.com/PenkalapatiCharanSai/AI-Based-Attendance-System"
+              target="_blank" rel="noopener">View Code ↗</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 10. EXTRACURRICULAR ACTIVITIES -->
-  <section id="extracurricular" class="section section--alt">
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="section">
     <div class="container">
-      <h2>Extracurricular Activities</h2>
-      <ul class="list">
-        <li>Member — College Coding Club (workshops)</li>
-        <li>Volunteer — Digital literacy NGO</li>
-        <li>Kho-Kho and Volley ball </li>
-      </ul>
+      <div class="section__head reveal">
+        <p class="eyebrow">Certifications</p>
+        <h2 class="section__title">Certifications</h2>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z" />
+            </svg></div>
+          <div class="txt">
+            <a href="https://www.credly.com/badges/b341dff9-0237-47ad-820b-acaba5c86589/linked_in_profile"
+              target="_blank" rel="noopener">Web Development Fundamentals</a>
+            <div class="meta">IBM · 2025</div>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z" />
+            </svg></div>
+          <div class="txt">
+            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_wKXNYfZmFnycbR3JQ_1752587271476_completion_certificate.pdf"
+              target="_blank" rel="noopener">Data Analytics Job Simulation</a>
+            <div class="meta">Deloitte Australia (Forage) · 2025</div>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z" />
+            </svg></div>
+          <div class="txt">
+            <a href="https://www.coursera.org/account/accomplishments/records/GVCZ6MBWDOSK" target="_blank"
+              rel="noopener">The Java Language</a>
+            <div class="meta">Coursera · 2025</div>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z" />
+            </svg></div>
+          <div class="txt">
+            <a href="https://www.coursera.org/account/accomplishments/records/5B84275GJBKK" target="_blank"
+              rel="noopener">Python Programming Essentials</a>
+            <div class="meta">Coursera · 2023</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
     </div>
   </section>
 
-  <!-- 11. CONTACT / LINKS -->
-  <section id="contact" class="section">
-    <div class="container two-col">
-      <div>
-        <h2>Contact</h2>
-        <p class="small muted">Let’s connect through any platform below</p>
-  
-        <div class="social" style="margin-top:1rem;">
-          <a href="mailto:pcharan87746@gmail.com" aria-label="Email">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-          <a href="https://github.com/PenkalapatiCharanSai" target="_blank" rel="noopener" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/charan-sai-penakalapati/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
+  <!-- CONTACT -->
+  <section id="contact" class="section section--alt">
+    <div class="container">
+      <div class="contact__panel">
+        <div class="reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's work together</h2>
+          <p>Open to full-time software engineering roles — happy to talk about internships, collaborations, or just
+            software.</p>
+
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:pcharan87746@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M2 7l10 6 10-6" />
+                </svg>
+                pcharan87746@gmail.com
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/PenkalapatiCharanSai" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.28 5.69.42.36.78 1.07.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.2.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z" />
+                </svg>
+                github.com/PenkalapatiCharanSai
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/charan-sai-penakalapati/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
+                </svg>
+                linkedin.com/in/charan-sai-penakalapati
+              </a>
+            </li>
+            <li>
+              <a href="https://leetcode.com/u/PenakalapatiCharanSai/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863 0-.713.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.178 1.823.645l2.697 2.607c.507.507 1.32.507 1.827 0s.507-1.32 0-1.827l-2.697-2.607C14.167 5.305 12.7 4.7 11.233 4.7c-1.468 0-2.934.605-3.921 1.592L2.993 10.67c-.987.988-1.493 2.454-1.493 3.922 0 1.468.506 2.934 1.493 3.922l4.319 4.363c.987.987 2.453 1.493 3.921 1.493 1.467 0 2.934-.506 3.921-1.493l2.697-2.607c.507-.507.507-1.32 0-1.827s-1.32-.507-1.827 0zM20.812 13.066H9.72c-.717 0-1.3.583-1.3 1.3 0 .717.583 1.3 1.3 1.3h11.092c.717 0 1.3-.583 1.3-1.3 0-.717-.583-1.3-1.3-1.3z" />
+                </svg>
+                leetcode.com/u/PenakalapatiCharanSai
+              </a>
+            </li>
+            <li>
+              <a href="https://hackerrank.com/profile/pcharansai" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2.4 17.4h-2.16v-10.8h2.16v4.08h4.8v-4.08h2.16v10.8h-2.16v-4.56h-4.8v4.56z" />
+                </svg>
+                hackerrank.com/profile/pcharansai
+              </a>
+            </li>
+          </ul>
         </div>
+
+        <form id="contactForm" class="contact-form reveal" aria-label="Contact form"
+          action="https://formsubmit.co/287cad95125269dc3404757b75294959" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New Portfolio Message!">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" required name="name" placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" required type="email" name="email" placeholder="you@gmail.com" />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" required name="message" rows="5" placeholder="How can I help?"></textarea>
+          </div>
+          <button type="submit" class="btn btn--solid">Send Message</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+          <p class="form-note">I will try to respond to your message within 24 hours.</p>
+        </form>
       </div>
-  
-      <form id="contactForm" class="card card--soft" aria-label="Contact form">
-        <label>
-          Name
-          <input required name="name" placeholder="Your name" />
-        </label>
-        <label>
-          Email
-          <input required type="email" name="email" placeholder="you@gmail.com" />
-        </label>
-        <label>
-          Message
-          <textarea required name="message" rows="5" placeholder="How can I help?"></textarea>
-        </label>
-        <button type="submit" class="btn">Send Message</button>
-        <p class="muted tiny">This form will open your email client with a pre-filled message.</p>
-      </form>
     </div>
   </section>
-  
-  
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer__grid">
-      <div class="small muted">© <span id="year"></span> Penakalapati Charan Sai</div>
-      <a class="tiny" href="#top">Back to top ↑</a>
+      <span class="muted">© <span id="year"></span> Penakalapati Charan Sai</span>
+      <a class="back-top" href="#top">Back to top ↑</a>
     </div>
   </footer>
 
 </body>
+
 </html>

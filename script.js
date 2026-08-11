@@ -1,97 +1,164 @@
 /* ============= UTILITIES ============= */
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $  = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============= THEME TOGGLE ============= */
+const themeToggleBtn = $('#themeToggle');
+
+function getPreferredTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark';
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// Synchronize theme on load
+setTheme(getPreferredTheme());
+
+themeToggleBtn?.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  setTheme(next);
+});
 
 /* ============= MOBILE NAV ============= */
 const toggle = $('.nav-toggle');
 const menu = $('#menu');
+
 toggle?.addEventListener('click', () => {
   const open = menu.classList.toggle('open');
   toggle.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
 });
 
-/* Close mobile menu on link click */
 $$('#menu a').forEach(a => a.addEventListener('click', () => {
   menu.classList.remove('open');
-  toggle.setAttribute('aria-expanded', 'false');
+  toggle?.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
 }));
 
-/* ============= THEME (Light/Dark) ============= */
-const themeToggle = $('#themeToggle');
-const applyTheme = (mode) => {
-  if(mode === 'light'){ document.documentElement.classList.add('light'); themeToggle.textContent = '🌙'; }
-  else { document.documentElement.classList.remove('light'); themeToggle.textContent = '🌞'; }
-  localStorage.setItem('theme', mode);
-};
-applyTheme(localStorage.getItem('theme') || 'dark');
-themeToggle?.addEventListener('click', () => {
-  const isLight = document.documentElement.classList.contains('light');
-  applyTheme(isLight ? 'dark' : 'light');
-});
-
-/* ============= FOOTER YEAR ============= */
-$('#year').textContent = new Date().getFullYear();
-
-/* ============= CONTACT FORM (mailto) ============= */
-$('#contactForm')?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const data = new FormData(e.currentTarget);
-  const name = data.get('name') || '';
-  const email = data.get('email') || '';
-  const message = data.get('message') || '';
-  const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-  window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
-});
-
-/* ============= GSAP ENTRANCE ANIMATIONS ============= */
-window.addEventListener('load', () => {
-  // ensure gsap loaded
-  if (window.gsap) {
-    // Hero intro
-    gsap.from('.hero .eyebrow', { y: -12, opacity: 0, duration: .6, ease: 'power2.out' });
-    gsap.from('.hero__title', { y: 12, opacity: 0, duration: .7, delay: .1, ease: 'power2.out' });
-    gsap.from('.lead', { y: 12, opacity: 0, duration: .7, delay: .2, ease: 'power2.out' });
-    gsap.from('.cta-row, .social', { y: 12, opacity: 0, duration: .7, delay: .35, stagger: .1, ease: 'power2.out' });
-    gsap.from('.avatar', { scale: .9, opacity: 0, duration: .8, delay: .25, ease: 'power2.out' });
-
-    // Smooth anchor links (GSAP ScrollTo)
-    $$('#menu a[href^="#"], .cta-row a[href^="#"], .footer a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const id = a.getAttribute('href');
-        if (id && id.startsWith('#')) {
-          gsap.to(window, { duration: .7, scrollTo: id, ease: 'power2.out' });
-        }
-      });
-    });
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menu?.classList.contains('open')) {
+    menu.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
 });
 
-/* ============= ScrollMagic + GSAP for sections ============= */
-const controller = new ScrollMagic.Controller();
-
-// Reveal sections with stagger
-$$('.section').forEach((sec) => {
-  const cardChildren = sec.querySelectorAll('h2, p, .grid, .two-col, .timeline, form, .card, .project');
-  if (cardChildren.length === 0) return;
-  gsap.set(cardChildren, { y: 20, opacity: 0 });
-
-  const tween = gsap.to(cardChildren, {
-    y: 0, opacity: 1, stagger: .08, duration: .6, ease: 'power2.out'
+/* ============= SMOOTH ANCHOR SCROLL ============= */
+$$('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    if (!id || id === '#') return;
+    const target = $(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+    history.pushState(null, '', id);
   });
-
-  new ScrollMagic.Scene({
-    triggerElement: sec,
-    triggerHook: 0.85, // when section is near viewport
-    reverse: false
-  })
-  .setTween(tween)
-  // .addIndicators({ name: sec.id || 'section' }) // debug only
-  .addTo(controller);
 });
 
-// Pin the header lightly on scroll (subtle effect)
-new ScrollMagic.Scene({ triggerElement: '.hero', triggerHook: 0, duration: '50%' })
-  .setPin('.site-header', { pushFollowers: false })
-  .addTo(controller);
+/* ============= ACTIVE NAV LINK ON SCROLL ============= */
+const navLinks = $$('#menu a[href^="#"]');
+const sections = navLinks
+  .map(a => $(a.getAttribute('href')))
+  .filter(Boolean);
+
+if (sections.length) {
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = navLinks.find(a => a.getAttribute('href') === `#${entry.target.id}`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(sec => navObserver.observe(sec));
+}
+
+/* ============= SCROLL REVEAL ============= */
+const revealTargets = $$('.reveal');
+
+if (revealTargets.length && !prefersReducedMotion) {
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  revealTargets.forEach((el, i) => {
+    el.style.transitionDelay = `${Math.min(i % 6, 5) * 60}ms`;
+    revealObserver.observe(el);
+  });
+} else {
+  revealTargets.forEach(el => el.classList.add('is-visible'));
+}
+
+/* ============= FOOTER YEAR ============= */
+const yearEl = $('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ============= CONTACT FORM (AJAX) ============= */
+const contactForm = $('#contactForm');
+const formStatus = $('#formStatus');
+
+contactForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(e.currentTarget);
+  const name = (data.get('name') || '').toString().trim();
+  const email = (data.get('email') || '').toString().trim();
+  const message = (data.get('message') || '').toString().trim();
+
+  if (!name || !email || !message) {
+    if (formStatus) {
+      formStatus.textContent = 'Please fill in every field before sending.';
+      formStatus.style.color = '#ef4444';
+    }
+    return;
+  }
+
+  data.set('_replyto', email);
+  data.set('_subject', `New Portfolio Message from ${name}`);
+
+  const btn = contactForm.querySelector('button[type="submit"]');
+  if (btn) btn.textContent = 'Sending...';
+  if (formStatus) formStatus.textContent = '';
+
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/287cad95125269dc3404757b75294959', {
+      method: 'POST',
+      body: data
+    });
+    
+    if (res.ok) {
+      if (formStatus) {
+        formStatus.textContent = 'Message sent successfully! I will get back to you soon.';
+        formStatus.style.color = '#10b981';
+      }
+      contactForm.reset();
+    } else {
+      if (formStatus) {
+        formStatus.textContent = 'Oops! There was a problem submitting your message.';
+        formStatus.style.color = '#ef4444';
+      }
+    }
+  } catch (err) {
+    if (formStatus) {
+      formStatus.textContent = 'Oops! Network error while submitting the form.';
+      formStatus.style.color = '#ef4444';
+    }
+  } finally {
+    if (btn) btn.textContent = 'Send Message';
+  }
+});
